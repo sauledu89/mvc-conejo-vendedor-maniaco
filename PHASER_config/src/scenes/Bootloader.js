@@ -54,8 +54,8 @@ class Bootloader extends Phaser.Scene {
 
         // Creación de elemento imagen -> BackGround
         //BackGround
-        this.BG = this.add.image(850, 435, 'BG').setDisplaySize(1698, 868);;
-
+        this.BG = this.add.image(850, 435, 'BG').setDisplaySize(1698, 868);
+        
         // Creación de todos los KeyBindings que se usarán en el juego.
         //Se llama a la función de Phaser
         const keyCodes = Phaser.Input.Keyboard.KeyCodes;
