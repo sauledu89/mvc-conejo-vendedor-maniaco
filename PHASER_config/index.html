@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tank Battle</title>
+
+    <style>
+        /* General */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #9ad8ff; /* Fondo verde oscuro */
+        }
+
+        .header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header img {
+            max-width: 60%; /* Ajusta el tamaño del título */
+            height: auto;
+        }
+
+        .game-container {
+            width: 75%; /* Ajusta el tamaño relativo */
+            aspect-ratio: 16 / 9; /* Mantén una proporción 16:9 */
+            border: 4px solid #fd9c5c; /* Borde blanco */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra */
+            position: relative;
+            overflow: hidden; /* Asegúrate de que el canvas no desborde */
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <img src="./assets/CHARLES.png" alt="Charles">
+    </div>
+    <div class="game-container" id="game-container"></div>
+
+    <script src="./node_modules/phaser/dist/phaser.js"></script>
+    <script>
+        // Configuración de Phaser para limitar el canvas al contenedor
+        // const config = {
+        //    type: Phaser.AUTO,
+        //    parent: 'game-container', // Asegura que el canvas se dibuje dentro del contenedor
+         //   width: 1280,
+         //   height: 720,
+         //   scale: {
+         //       mode: Phaser.Scale.AUTO, // Ajusta el tamaño del canvas al contenedor
+         //       autoCenter: Phaser.Scale.CENTER_BOTH, // Centra el canvas en el contenedor
+        //    },
+        //    scene: [Bootloader],
+        //    backgroundColor: '#2f4f4f', // Fondo del canvas
+      //  };
+
+   //     const game = new Phaser.Game(config);
+    </script>
+    <script src="./src/main.js" type="module"></script>
+</body>
+</html>
