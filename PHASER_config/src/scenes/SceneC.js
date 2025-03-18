@@ -1,5 +1,6 @@
 import SceneA from  './SceneA.js';
 import SceneB from  './SceneB.js';
+import SceneD from  './SceneD.js';
 
 export default class SceneC extends Phaser.Scene {
 
@@ -33,7 +34,7 @@ export default class SceneC extends Phaser.Scene {
        .setScale(0.5)
        .setInteractive() // Hacer la imagen interactiva
        .on('pointerdown', () => {
-           this.scene.start('SceneA'); // Cambiar a SceneB
+           this.scene.start('SceneD'); // Cambiar a SceneD
        });
 
        // Imagen para pasar a SceneB
@@ -42,7 +43,7 @@ export default class SceneC extends Phaser.Scene {
        .setFlipX(true) // Voltea la imagen horizontalmente
        .setInteractive() // Hacer la imagen interactiva
        .on('pointerdown', () => {
-           this.scene.start('SceneB'); // Cambiar a SceneC
+           this.scene.start('SceneB'); // Cambiar a SceneB
        });
 
 
