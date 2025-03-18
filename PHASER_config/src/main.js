@@ -31,7 +31,7 @@ physics: {
     default: "arcade",
     arcade: {
         debug: false,
-        gravity: { y: 0 } // Sin gravedad
+        gravity: { y: 1000 } // Sin gravedad
     }
 }
 

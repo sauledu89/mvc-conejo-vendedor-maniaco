@@ -1,5 +1,4 @@
 import SceneA from  './SceneA.js';
-import SceneB from  './SceneB.js';
 import SceneC from  './SceneC.js';
 
 export default class SceneD extends Phaser.Scene {
