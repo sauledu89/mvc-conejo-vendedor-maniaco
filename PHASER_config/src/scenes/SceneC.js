@@ -1,58 +1,31 @@
-import SceneA from  './SceneA.js';
-import SceneB from  './SceneB.js';
-import SceneD from  './SceneD.js';
-
 export default class SceneC extends Phaser.Scene {
+    constructor() {
+        super({ key: 'SceneC', active: true });
 
-    constructor()
-    {
-        super({key: 'SceneC'});
+        this.menuAbierto = false;
     }
 
-
-    preload()
-    {
-      
-        console.log('llegó a SceneC');
-
+    preload() {
+        this.load.path = './assets/imagenes/';
+        this.load.image('MenuConejo', 'menubunny.png');
     }
 
-    create()
-    {
-        // grapics es la forma de graficar objetos o figuras 2D
-         let graphics = this.add.graphics();       
-                             //color , alpha
-         graphics.fillStyle('0x00FF00', 1);        //Estilo de llenado
-        //Figura y coordenadas 
-        //                 posición | tamaño 
-         graphics.fillRect(70, 70, 1550, 730);
-        //Coordenadas | 'texto' | condiciones 
-         this.add.text(100, 90, 'C', {font: '200px Arial', fill: '0x000000'});
+    create() {
+        this.menu = this.add.image(850, 750, 'MenuConejo')
+            .setScale(0.2)
+            .setDepth(2)
+            .setVisible(false)
+            .setInteractive();
 
-       // Imagen para pasar a SceneA
-       this.TheNextScene = this.add.image(1450, 650, 'NextScene')
-       .setScale(0.5)
-       .setInteractive() // Hacer la imagen interactiva
-       .on('pointerdown', () => {
-           this.scene.start('SceneD'); // Cambiar a SceneD
-       });
+        console.log("✅ SceneC ha creado su menú correctamente.");
 
-       // Imagen para pasar a SceneB
-       this.ThePreviewScene = this.add.image(250, 650, 'NextScene')
-       .setScale(0.5)
-       .setFlipX(true) // Voltea la imagen horizontalmente
-       .setInteractive() // Hacer la imagen interactiva
-       .on('pointerdown', () => {
-           this.scene.start('SceneB'); // Cambiar a SceneB
-       });
-
-
+        // Emitimos un evento para avisar a SceneA que SceneC ya está lista
+        this.scene.get('SceneA').events.emit('SceneCReady');
     }
 
-    update()
-    {
-
-
+    toggleMenu() {
+        this.menuAbierto = !this.menuAbierto;
+        this.menu.setVisible(this.menuAbierto);
+        console.log(`Menú del conejo ${this.menuAbierto ? 'abierto' : 'cerrado'}`);
     }
-
 }

@@ -1,60 +1,31 @@
-import SceneA from  './SceneA.js';
-import SceneC from  './SceneC.js';
 export default class SceneB extends Phaser.Scene {
+    constructor() {
+        super({ key: 'SceneB', active: true });
 
-    constructor()
-    {
-        super({key: 'SceneB' });
+        this.menuAbierto = false;
     }
 
-
-    preload()
-    {
-        console.log('llegó a SceneB');
-        this.load.path = './assets/'; 
-        this.load.image('NextScene', 'ChangeScene.png'); 
-
-        this.load.path = './assets/imagenes/'; 
-        this.load.image('MenuBunny', 'menubunnybutton.png'); 
-        this.load.image('MenuBunny', 'menufarm.png'); 
-
+    preload() {
+        this.load.path = './assets/imagenes/';
+        this.load.image('MenuCultivos', 'menufarm.png');
     }
 
-    create()
-    {
-        // grapics es la forma de graficar objetos o figuras 2D
-         let graphics = this.add.graphics();       
-                             //color , alpha
-         graphics.fillStyle('0xFF0000', 1);        //Estilo de llenado
-        //Figura y coordenadas 
-        //                 posición | tamaño 
-         graphics.fillRect(70, 70, 1550, 730);
-        //Coordenadas | 'texto' | condiciones 
-         this.add.text(100, 90, 'B', {font: '200px Arial', fill: '0x000000'});
+    create() {
+        this.menu = this.add.image(850, 750, 'MenuCultivos')
+            .setScale(0.2)
+            .setDepth(2)
+            .setVisible(false)
+            .setInteractive();
 
-        // Imagen para pasar a SceneC
-        this.TheNextScene = this.add.image(1450, 650, 'NextScene')
-            .setScale(0.5)
-            .setInteractive() // Hacer la imagen interactiva
-            .on('pointerdown', () => {
-                this.scene.start('SceneC'); // Cambiar a SceneB
-            });
+        console.log("✅ SceneB ha creado su menú correctamente.");
 
-        // Imagen para pasar a SceneA
-        this.ThePreviewScene = this.add.image(250, 650, 'NextScene')
-            .setScale(0.5)
-            .setFlipX(true) // Voltea la imagen horizontalmente
-            .setInteractive() // Hacer la imagen interactiva
-            .on('pointerdown', () => {
-                this.scene.start('SceneA'); // Cambiar a SceneC
-            });
-
+        // Emitimos un evento para avisar a SceneA que SceneB ya está lista
+        this.scene.get('SceneA').events.emit('SceneBReady');
     }
 
-    update()
-    {
-
-
+    toggleMenu() {
+        this.menuAbierto = !this.menuAbierto;
+        this.menu.setVisible(this.menuAbierto);
+        console.log(`Menú de cultivos ${this.menuAbierto ? 'abierto' : 'cerrado'}`);
     }
-
 }

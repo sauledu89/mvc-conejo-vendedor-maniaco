@@ -1,6 +1,7 @@
 import SceneA from './scenes/SceneA.js';
 import SceneB from './scenes/SceneB.js';
 import SceneC from './scenes/SceneC.js'; 
+import SceneD from './scenes/SceneD.js';
 
 const config = {
     title: 'Protocolos',
@@ -26,7 +27,7 @@ const config = {
     },
 
 //  Se agregan todas las escenas al array de Phaser
-scene: [SceneA, SceneB, SceneC],
+scene: [SceneA, SceneB, SceneC, SceneD],
 physics: {
     default: "arcade",
     arcade: {
